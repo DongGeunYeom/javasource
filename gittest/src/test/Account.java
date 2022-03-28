@@ -15,6 +15,9 @@ public class Account {
 	public void deposit() {
 		
 	}
+	public void print() {
+		System.out.println("print");
+	}
 
 
 
