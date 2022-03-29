@@ -9,5 +9,6 @@ public class Calculator {
 	
 	private int num4;
 
+	private int num5;
 
 }
