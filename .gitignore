@@ -17,6 +17,11 @@ local.properties
 */.classpath
 */.project
 
+Servers/
+MANIFEST.MF 
+catalina.policy
+catalina.properties
+
 # External tool builders
 .externalToolBuilders/
 
