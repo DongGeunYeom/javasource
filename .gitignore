@@ -18,11 +18,13 @@ local.properties
 */.project
 *.xml
 
+
 Servers/
 MANIFEST.MF 
 catalina.policy
-catalina.properties
+*.properties
 bootstrap-4.6.1-dist/
+jquery-3.6.0.min.js
 
 # External tool builders
 .externalToolBuilders/

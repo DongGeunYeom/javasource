@@ -118,4 +118,52 @@ public class MemberDAO {
 		}
 		return flag;
 	}
+	
+	// 삭제(delete) : delete from member where id=?;
+	// 				  숫자( 1 - 성공, 0 - 실패 )
+	public boolean delete(int id) {
+		boolean flag = false;
+		PreparedStatement pstmt = null;
+		String sql = "delete from member where id=?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			
+			int result = pstmt.executeUpdate();
+			
+			if(result>0) flag = true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return flag;
+	}
+
+	// 수정(Update) : update member set addr =? where id =?;
+	//				  숫자( 1 - 성공, 0 - 실패 )
+	
+	public boolean update(int id, String addr) {
+		boolean flag = false;
+		PreparedStatement pstmt = null;
+		String sql = "update member set addr =? where id =?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, addr);
+			pstmt.setInt(2, id);
+			
+			int result = pstmt.executeUpdate();
+			
+			if(result>0) flag = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return flag;	
+	}
 }
+
