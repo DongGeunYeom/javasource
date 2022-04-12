@@ -11,10 +11,10 @@
 	Connection con = JdbcUtil.getConnection();
 	BookDAO dao = new BookDAO(con);
 	List<BookDTO> list = dao.getList();
-
+	
+	JdbcUtil.close(con);
 	// 페이지 이동
 	request.setAttribute("list", list);
-	JdbcUtil.close(con);
 	pageContext.forward("list.jsp");
 	
 %>
