@@ -78,30 +78,37 @@ public class BookDAO {
 		return list;	
 	}
 	
-	public BookDTO getRow(int code, String writer) {
-		BookDTO dto = null;
+
+	// 검색
+	// select * from booktbl where code=1001
+	// select * from booktbl where writer=홍길동
+	// select * from booktbl where writer like '%길동%'
+	public List<BookDTO> searchList(String criteria, String keyword) {
+		List<BookDTO> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from member where ";
+		String sql = "select * from bookTBL where ";
 		
 		try {
-			pstmt = con.prepareStatement(sql);
-			if(code!=0) {
+			if(criteria.equals("code")) {
 				sql += "code=?";
-				pstmt.setInt(1, code);
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, Integer.parseInt(keyword));
 			} else {
-				sql += "writer=?";
-				pstmt.setString(1, writer);
+				sql += "writer like ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%"+keyword+"%");
 			}
 			
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				dto = new BookDTO();
+			while(rs.next()) {
+				BookDTO dto = new BookDTO();
 				dto.setCode(rs.getInt("code"));
 				dto.setTitle(rs.getString("title"));
 				dto.setWriter(rs.getString("writer"));
 				dto.setPrice(rs.getInt("price"));
+				
+				list.add(dto);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -109,7 +116,7 @@ public class BookDAO {
 			close(rs);
 			close(pstmt);
 		}		
-		return dto;
+		return list;
 	} 
 	
 	public boolean delete(int code) {
@@ -132,7 +139,7 @@ public class BookDAO {
 		}
 		return flag;
 	}
-
+	
 	public boolean update(int code, int price) {
 		boolean flag = false;
 		PreparedStatement pstmt = null;

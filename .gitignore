@@ -17,7 +17,8 @@ local.properties
 */.classpath
 */.project
 *.xml
-
+*.jpg
+*.png
 
 Servers/
 MANIFEST.MF 

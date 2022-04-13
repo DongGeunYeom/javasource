@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="book.dto.BookDTO"%>
 <%@page import="book.dao.BookDAO"%>
 <%@page import="book.dao.JdbcUtil"%>
@@ -7,13 +8,17 @@
 <%
 	request.setCharacterEncoding("utf-8");
 
-	int code = Integer.parseInt(request.getParameter("code"));
-	String writer = request.getParameter("writer");
-	
+	// search.jsp 에서 넘긴 값 가져오기
+	String criteria = request.getParameter("criteria"); // code or writer
+	String keyword = request.getParameter("keyword"); // 1004 or 홍길동
+		
+	// db작업
 	Connection con = JdbcUtil.getConnection();
 	BookDAO dao = new BookDAO(con);
-	BookDTO dto = dao.getRow(code, writer);
+	List<BookDTO> list = dao.searchList(criteria, keyword);
 	
-	request.setAttribute("dto", dto);
-	pageContext.forward("searchResult.jsp");
+	JdbcUtil.close(con);
+	// 페이지 이동(list.jsp)
+	request.setAttribute("list", list);
+	pageContext.forward("list.jsp");
 %>
