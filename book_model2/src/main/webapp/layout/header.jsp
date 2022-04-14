@@ -12,7 +12,7 @@
 <div class="jumbotron jumbotron-fluid" style="margin-bottom:0">
   <div class="container">
     <h1 class="display-4">도서관리시스템</h1>
-    <p class="lead">jsp/dao/dto 사용</p>
+    <p class="lead">model2</p>
   </div>
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -25,7 +25,7 @@
         <a class="nav-link" href="insert.jsp">도서입력</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="listPro.jsp">도서목록</a>
+        <a class="nav-link" href="/list.do">도서목록</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="delete.jsp">도서삭제</a>
