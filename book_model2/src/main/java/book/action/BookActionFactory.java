@@ -22,7 +22,14 @@ public class BookActionFactory {
 			action = new BookListAction("/list.jsp");
 		}else if(cmd.equals("/insert.do")){
 			action = new BookInsertAction("/list.do");
+		}else if(cmd.equals("/delete.do")){
+			action = new BookDeleteAction("/list.do");
+		}else if(cmd.equals("/update.do")){
+			action = new BookUpdateAction("/list.do");
+		}else if(cmd.equals("/search.do")){
+			action = new BookSearchAction("/list.jsp");
 		}
+			
 		return action;
 	}
 }

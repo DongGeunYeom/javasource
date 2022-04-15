@@ -1,4 +1,4 @@
-package book.controller;
+package member.controller;
 
 import java.io.IOException;
 
@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import book.action.Action;
-import book.action.ActionForward;
-import book.action.BookActionFactory;
+import member.action.Action;
+import member.action.ActionForward;
+import member.action.MemberActionFactory;
 
 /**
  * Servlet implementation class BookController
  */
 @WebServlet("*.do")
-public class BookController extends HttpServlet {
+public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -32,8 +32,8 @@ public class BookController extends HttpServlet {
 		String cmd = request.getRequestURI(); // *.do
 		
 		// Action 생성 => BookActionFactory 이용
-		BookActionFactory baf = BookActionFactory.getInstance();
-		Action action = baf.action(cmd); 
+		MemberActionFactory maf = MemberActionFactory.getInstance();
+		Action action = maf.action(cmd); 
 		
 		// 생성된 action에게 요청 넘기기
 		ActionForward af = null;

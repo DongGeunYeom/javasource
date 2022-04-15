@@ -11,7 +11,7 @@
 <body>
 <div class="jumbotron jumbotron-fluid" style="margin-bottom:0">
   <div class="container">
-    <h1 class="display-4">도서관리시스템</h1>
+    <h1 class="display-4">제품관리시스템</h1>
     <p class="lead">model2</p>
   </div>
 </div>
@@ -22,19 +22,19 @@
         <a class="nav-link" href="/index.jsp">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/insert.jsp">도서입력</a>
+        <a class="nav-link" href="/insert.jsp">제품입력</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/list.do">도서목록</a>
+        <a class="nav-link" href="/list.do">제품목록</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/delete.jsp">도서삭제</a>
+        <a class="nav-link" href="/delete.jsp">제품삭제</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/search.jsp">도서검색</a>
+        <a class="nav-link" href="/search.jsp">제품검색</a>
       </li>  
       <li class="nav-item">
-        <a class="nav-link" href="/update.jsp">도서수정</a>
+        <a class="nav-link" href="/update.jsp">제품수정</a>
       </li>  
     </ul>
   </div>

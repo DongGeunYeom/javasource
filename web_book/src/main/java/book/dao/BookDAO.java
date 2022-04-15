@@ -31,8 +31,8 @@ public class BookDAO {
 			pstmt.setString(2, dto.getTitle());
 			pstmt.setString(3, dto.getWriter());
 			pstmt.setInt(4, dto.getPrice());
-			// 실행
 			
+			// 실행	
 			int result = pstmt.executeUpdate();
 			
 			if(result>0) {

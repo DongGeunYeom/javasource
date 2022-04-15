@@ -1,4 +1,4 @@
-package book.action;
+package book.service;
 
 import java.sql.Connection;
 import java.util.List;
