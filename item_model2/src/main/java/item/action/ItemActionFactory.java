@@ -20,6 +20,12 @@ public class ItemActionFactory {
 			action = new ItemListAction("/list.jsp");
 		}else if(cmd.equals("/insert.do")) {
 			action = new ItemInsertAction("/list.do");
+		}else if(cmd.equals("/delete.do")) {
+			action = new ItemDeleteAction("/list.do");
+		}else if(cmd.equals("/update.do")) {
+			action = new ItemUpdateAction("/list.do");
+		}else if(cmd.equals("/search.do")) {
+			action = new ItemSearchAction("/list.jsp");
 		}
 		return action;
 	}

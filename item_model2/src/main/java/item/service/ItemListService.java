@@ -5,7 +5,7 @@ import static item.dao.JdbcUtil.*;
 import java.sql.Connection;
 import java.util.List;
 
-import item.controller.ItemDAO;
+import item.dao.ItemDAO;
 import item.dao.JdbcUtil;
 import item.dto.ItemDTO;
 

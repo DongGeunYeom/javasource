@@ -1,21 +1,21 @@
 package item.service;
+
 import static item.dao.JdbcUtil.*;
 
 import java.sql.Connection;
 
 import item.dao.ItemDAO;
-import item.dto.ItemDTO;
 
-public class ItemInsertService {
+public class ItemUpdateService {
 	
-	public boolean insertItem(ItemDTO dto) {
+	public boolean modify(int num, String psize, int price) {
 		Connection con = getConnection();
 		ItemDAO dao = new ItemDAO(con);
-		boolean result = dao.insert(dto);
+		boolean result= dao.update(num, psize, price);
 		
 		if(result) {
 			commit(con);
-		} else {
+		}else {
 			rollback(con);
 		}
 		close(con);
