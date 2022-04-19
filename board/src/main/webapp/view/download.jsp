@@ -5,8 +5,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	// download
-	
 	// 사용자가 다운로드를 요청한 파일명 가져오기
 	String fileName = request.getParameter("fileName");
 

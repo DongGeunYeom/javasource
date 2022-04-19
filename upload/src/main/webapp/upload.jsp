@@ -26,42 +26,42 @@
 		// 폼 or 파일 데이터인지 구분
 		String fieldName = "", fileName="", value="";
 		Iterator<FileItem> iter = items.iterator();
-	 while (iter.hasNext()) {
-    	FileItem item = iter.next();
+		 while (iter.hasNext()) {
+    		FileItem item = iter.next();
 
- 	   if (item.isFormField()) { // type = text, password, email...
-   	   	fieldName = item.getFieldName();
- 	    value = item.getString("utf-8");
- 	    out.print("<h3>일반 데이터</h3>");
- 	    out.print(fieldName+" : "+value+"<br>");
- 	   } else {
-  	      fieldName = item.getFieldName();
-  	      fileName = item.getName();
-  	      long size = item.getSize();
+ 	  		 if (item.isFormField()) { // type = text, password, email...
+   	  		 	fieldName = item.getFieldName();
+ 	    		value = item.getString("utf-8");
+ 	    		out.print("<h3>일반 데이터</h3>");
+ 	   			out.print(fieldName+" : "+value+"<br>");
+			 } else {
+  	    	 	fieldName = item.getFieldName();
+  	   		    fileName = item.getName();
+  	     		long size = item.getSize();
   	      
-  	    out.print("<h3>파일 데이터</h3>");
- 	    out.print(fieldName+" : "+fileName+" - "+size+"<br>");
+  	    		out.print("<h3>파일 데이터</h3>");
+ 	    		out.print(fieldName+" : "+fileName+" - "+size+"<br>");
  	    
  	    // 서버에 파일저장
  	    // 동일한 파일명이 들어올 경우 => 중복되지 않은 고유의 값을 파일명에 추가
- 	    if(!fileName.isEmpty()){
- 	    	String path = "d:\\upload";
+ 	 	  		 if(!fileName.isEmpty()){
+ 	    			String path = "d:\\upload";
  	    	
- 	    	UUID uuid = UUID.randomUUID();
+ 	    			UUID uuid = UUID.randomUUID();
  	    	
- 	    	File uploadFile = new File(path+"\\"+uuid.toString()+"_"+fileName);
+ 	    			File uploadFile = new File(path+"\\"+uuid.toString()+"_"+fileName);
  	    	
- 	    	item.write(uploadFile);
+ 	    			item.write(uploadFile);
+ 	    			
+ 	    			// 파일명에 특수문자가 존재할 때 파일명이 깨지는 것을 방지
+ 	    			String encodeName = URLEncoder.encode(uploadFile.getName(), "utf-8");
  	    	
- 	    	// 파일명에 특수문자가 존재할 때 파일명이 깨지는 것을 방지
- 	    	String encodeName = URLEncoder.encode(uploadFile.getName(), "utf-8");
- 	    	
- 	    	out.print("<p>");
- 	    	out.print("<a href='download.jsp?fileName="+encodeName+"'>"+fileName+"</a>");
- 	    	out.print("</p>");
- 	    }
+ 	    			out.print("<p>");
+ 	    			out.print("<a href='download.jsp?fileName="+encodeName+"'>"+fileName+"</a>");
+ 	    			out.print("</p>");
+ 	    		}
  	   
- 	   }
-   }	
+ 	 	  }
+   	}	
 }
 %>
