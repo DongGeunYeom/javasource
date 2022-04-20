@@ -21,4 +21,11 @@
 		// submit 설정
 		formObj.submit();
 	})
+	
+	$("#reply").click(function(){
+		// 폼 action 지정
+		formObj.attr("action", "/qReplyView.do");
+		// submit 설정
+		formObj.submit();
+	})
 })
