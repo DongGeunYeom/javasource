@@ -2,11 +2,16 @@
  *  qna_board_view.jsp 스크립트
  */
  $(function(){
+	
+	let formObj = $("#actionForm");
+	
  	$("#list").click(function(){
- 		location.href = "/qList.do";
+		// actionForm 의 action 새로 지정 => /qList.do
+		formObj.attr("action", "/qList.do");
+		
+		// actionForm submit()
+		formObj.submit();
  	})
- 	
- 	let formObj = $("#actionForm");
  	
  	$("#delete").click(function(){
 		// 폼 action 지정

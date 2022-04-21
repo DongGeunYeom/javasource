@@ -51,12 +51,12 @@
 			<input type="hidden" name="re_seq" value="${dto.reSeq}" />
 			<input type="hidden" name="re_lev" value="${dto.reLev}" />
 			<input type="hidden" name="bno" value="${dto.bno}" />
+			<%-- 페이지 나누기 정보 --%>
+			<input type="hidden" name="page" value="${searchDto.page}" />
+			<input type="hidden" name="amount" value="${searchDto.amount}" />
+			<input type="hidden" name="criteria" value="${searchDto.criteria}" />
+			<input type="hidden" name="keyword" value="${searchDto.keyword}" />	
 		</form>
 	</div>
 </section>
-<script src="/js/reply.js"></script>
-<%-- write form validate --%>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
-<script src="/js/reply_validate.js"></script>
 <%@include file="../include/footer.jsp"%>

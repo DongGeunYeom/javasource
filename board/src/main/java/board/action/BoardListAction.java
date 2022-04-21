@@ -19,13 +19,16 @@ public class BoardListAction implements Action {
 		// 페이지 나누기 - 사용자가 요청한 페이지 가져오기
 		int page = Integer.parseInt(request.getParameter("page"));
 		int amount = 10;
+		String criteria = request.getParameter("criteria");
+		String keyword = request.getParameter("keyword");
 		
-		SearchDTO searchDto = new SearchDTO(page, amount);
+		SearchDTO searchDto = new SearchDTO(criteria, keyword, page, amount);
+		
 		BoardListService service = new BoardListService();
 		List<BoardDTO> list = service.getList(searchDto);
 		
 		BoardTotalRowsService rows = new BoardTotalRowsService();
-		int totalRows = rows.total();
+		int totalRows = rows.total(criteria, keyword);
 		
 		PageDTO pageDto = new PageDTO(totalRows, searchDto);
 		

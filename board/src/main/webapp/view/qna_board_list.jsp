@@ -9,17 +9,19 @@
 		</div>
 		<div class="row">
 			<div class="col-md-4">
-				<button type="button" class="btn btn-primary" onclick="location.href='/view/qna_board_write.jsp'">글쓰기</button>
+				<button type="button" class="btn btn-success" >글쓰기</button>
 			</div><!--글쓰기 버튼-->
 			<div class="col-md-4 offset-md-4"><!--검색 들어갈 부분-->
-				<form action="/qSearch.do" method="get" id="search">
+				<form action="/qList.do" method="get" id="search" >
+					<input type="hidden" name="page" value="${pageDto.searchDto.page}" />
+					<input type="hidden" name="amount" value="${pageDto.searchDto.amount}" />
 					<select name="criteria" id="">
-						<option value="n">-------</option>
-						<option value="title">title</option>
-						<option value="content">content</option>
-						<option value="name">name</option>
+						<option value="n" <c:out value="${pageDto.searchDto.criteria == null?'selected':''}" />>-------</option>
+						<option value="title" <c:out value="${pageDto.searchDto.criteria == 'title'?'selected':''}" />>title</option>
+						<option value="content" <c:out value="${pageDto.searchDto.criteria == 'content'?'selected':''}" />>content</option>
+						<option value="name" <c:out value="${pageDto.searchDto.criteria == 'name'?'selected':''}" />>name</option>
 					</select>
-					<input type="text" name="keyword" id="" />
+					<input type="text" name="keyword" id="" value="${pageDto.searchDto.keyword}"/>
 					<input type="button" value="검색" class="btn btn-primary"/>
 				</form>
 			</div>
@@ -42,7 +44,7 @@
 							&nbsp; <%-- 공백 --%>
 						</c:forEach>
 					</c:if>
-					<a href="/qHitUpdate.do?bno=${dto.bno}">${dto.title}</a>
+					<a href="${dto.bno}" class="move" >${dto.title}</a>
 				</td>
 				<td class='text-center'>${dto.name}</td><!--작성자-->
 				<td class='text-center'>${dto.regDate}</td><!--날짜-->
@@ -76,6 +78,11 @@
 <form action="" id="actionForm">
 	<input type="hidden" name="page" value="${pageDto.searchDto.page}" />
 	<input type="hidden" name="amount" value="${pageDto.searchDto.amount}" />
+	<input type="hidden" name="criteria" value="${pageDto.searchDto.criteria}" />
+	<input type="hidden" name="keyword" value="${pageDto.searchDto.keyword}" />
 </form>
+<script>
+	let totalPage = ${pageDto.totalPage};
+</script>
 <script src="/js/list.js"></script>
 <%@include file="../include/footer.jsp"%>

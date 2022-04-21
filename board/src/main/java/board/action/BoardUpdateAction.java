@@ -1,5 +1,6 @@
 package board.action;
 
+import java.net.URLEncoder;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,15 +28,20 @@ public class BoardUpdateAction implements Action {
 		updateDto.setPassword(dataMap.get("password"));
 		updateDto.setAttach(dataMap.get("attach")); // 파일첨부를 했다면 값이 들어와 있고, 안했다면 null
 		
+		String page = dataMap.get("page");
+		String amount = dataMap.get("amount");
+		String criteria = dataMap.get("criteria");
+		String keyword = URLEncoder.encode(dataMap.get("keyword"), "utf-8"); 
+			
 		//서비스 호출
 		BoardUpdateService service = new BoardUpdateService();
 		boolean result = service.modify(updateDto);
 		
 		// 결과에 따라 페이지 이동 => 성공 : qView.do, 실패 : qModify.do
 		if(!result) {
-			path ="/qModify.do?bno="+bno;
+			path ="/qModify.do?bno="+updateDto.getBno()+"&page="+page+"&amount="+amount+"&criteria="+criteria+"&keyword="+keyword;
 		}else {
-			path += "?bno="+bno; // "/qView.do?bno=3"
+			path += "?bno="+updateDto.getBno()+"&page="+page+"&amount="+amount+"&criteria="+criteria+"&keyword="+keyword; // "/qView.do?bno=3"
 		}
 		return new ActionForward(path, true);
 	}

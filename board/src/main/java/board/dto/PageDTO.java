@@ -21,6 +21,9 @@ public class PageDTO {
 	// 다음 부분을 보여줄 것인지 여부
 	private boolean next;
 	
+	// 전체 페이지 수
+	private int totalPage;
+	
 	// 전체 게시물 수 
 	private int total;
 	
@@ -48,5 +51,8 @@ public class PageDTO {
 		// 이전 / 다음 버튼 활성화
 		this.prev = this.startPage> 1;
 		this.next = this.endPage < realEnd;
+		
+		// 전체 페이지 수 
+		totalPage = realEnd;
 	}
 }

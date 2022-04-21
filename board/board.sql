@@ -142,3 +142,14 @@ from (select rownum AS rnum, A.*
 				where bno>0 order by re_ref desc, re_seq asc) A
 		where rownum<=20)
 where rnum > 10;
+
+-- 검색
+
+select *
+from (select rownum AS rnum, A.*
+		from (select bno, title, name, regdate, readcount, re_ref, re_lev, re_seq
+				from board 
+				where bno>0 and title like '%jsp%' order by re_ref desc, re_seq asc) A
+		where rownum<=10)
+where rnum>0;
+
